@@ -78,9 +78,9 @@ on stdin, and is wiped as soon as the database is open.
 2. A password is fetched on the keystroke that asks for it, into a byte buffer that
    overwrites itself.
 3. The clipboard is marked `org.nspasteboard.ConcealedType` so clipboard managers
-   skip it, and cleared after 30 seconds.
+   skip it, and cleared after 30 seconds (15, 60 or never in Settings).
 4. The panel is `sharingType = .none`, so it never appears in a screen recording.
-5. Locking is real: on sleep, on screen lock, after 15 idle minutes, or `sesam lock`.
+5. Locking is real: on sleep, on screen lock, after 15 idle minutes (5, 60 or never in Settings), or `sesam lock`.
 
 Full detail, including what Sesam cannot defend against, is in [SECURITY.md](SECURITY.md).
 
@@ -123,7 +123,7 @@ buffer and quite possibly a screen share.
 
 ```sh
 make build
-make test        # 195 checks, about 10 seconds
+make test        # 203 checks, about 10 seconds
 ```
 
 One `swiftc` call over `Sources/`. The tests compile the whole app minus `main.swift`
