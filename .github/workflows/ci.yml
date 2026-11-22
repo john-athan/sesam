@@ -1,0 +1,28 @@
+name: CI
+
+# A caller, never a container: this is tools/validate.sh, the same script
+# `oss check sesam` runs on the machine the code was written on. macos,
+# because it is a Swift app built against AppKit and no other runner can
+# compile it.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Swift version
+        run: swift --version
+      - name: Validate
+        run: tools/validate.sh
