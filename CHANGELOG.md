@@ -6,6 +6,11 @@ All notable changes to this project are documented here. Format loosely follows
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-22
+
+### Changed
+- README: correct the test count to 203 and say the clipboard and idle timeouts are defaults
+
 ## [0.2.0] - 2026-11-22
 
 ### Added

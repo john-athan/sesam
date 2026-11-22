@@ -5,8 +5,8 @@
   <key>CFBundleName</key><string>Sesam</string>
   <key>CFBundleDisplayName</key><string>Sesam</string>
   <key>CFBundleIdentifier</key><string>io.github.john-athan.sesam</string>
-  <key>CFBundleVersion</key><string>0.2.0</string>
-  <key>CFBundleShortVersionString</key><string>0.2.0</string>
+  <key>CFBundleVersion</key><string>0.2.1</string>
+  <key>CFBundleShortVersionString</key><string>0.2.1</string>
   <key>CFBundleIconFile</key><string>AppIcon</string>
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleExecutable</key><string>sesam</string>
