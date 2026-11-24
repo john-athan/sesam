@@ -16,13 +16,13 @@
 
 ```sh
 brew install john-athan/tap/sesam
-cp -R "$(brew --prefix sesam)/Sesam.app" /Applications/
+sesam-install
 open /Applications/Sesam.app
 ```
 
 Homebrew builds from source on your machine, so there is no "unidentified developer"
 prompt, and `sesam` is on your `PATH` right away. The copy in `/Applications` is the
-one macOS will start at login. `brew upgrade sesam` updates it; copy it again after.
+one macOS will start at login. After `brew upgrade sesam`, run `sesam-install` again.
 
 ### From source
 
@@ -136,16 +136,15 @@ functions over fixtures.
 One, for one feature. `Enter` posts a synthetic ⌘V, and macOS gates that behind
 Accessibility. Copying does not, so `⌘C` works the minute it is installed.
 
-The grant is attached to a code identity, and Sesam is ad-hoc signed, so that
-identity is a hash of the binary. Every update and every rebuild produces a new hash,
-and macOS treats it as a different app: the switch in System Settings stays on, yet
-Sesam asks for the permission again the next time you press `Enter`. Turning the
-switch off and on does not help. After each update:
+The grant survives updates. `make install` and `sesam-install` sign the app with a
+self-signed certificate made on your Mac, and macOS recognises the next version by
+it. Coming from 0.2.1 or older, the first install clears the dead entry of the old
+build and macOS asks one last time, the next time you press `Enter`.
 
-1. Open System Settings → Privacy & Security → Accessibility.
-2. Select Sesam and remove it with the minus button.
-3. Press `Enter` in Sesam and allow it, or add `/Applications/Sesam.app` with the
-   plus button.
+The certificate is trusted for nothing. Its key is in
+`~/Library/Keychains/local-app-signing.keychain-db`, is not exportable, and is shared
+by the other apps of mine you build. The keychain does not go by it: macOS may still
+ask after an update whether Sesam may read the items it stored there.
 
 ## The decisions
 

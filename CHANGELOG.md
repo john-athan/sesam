@@ -6,6 +6,10 @@ All notable changes to this project are documented here. Format loosely follows
 
 ## [Unreleased]
 
+### Changed
+- The Accessibility grant survives updates: installing signs the app with a certificate made on your Mac, and clears the dead entry of an older build so macOS asks one last time
+- Homebrew: `sesam-install` copies and signs the app, instead of `cp -R`, and the `sesam` command runs the installed copy
+
 ## [0.2.1] - 2026-11-22
 
 ### Changed

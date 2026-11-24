@@ -38,12 +38,16 @@ URL cannot inject a command. A compromised copy of either binary is outside
 what Sesam can defend against: it is handed a master password.
 
 **A process running as you, against an unlocked Sesam, wins.** Sesam is built
-from source and ad-hoc signed, which means it has neither a Developer ID nor
+from source and signed on your Mac, which means it has neither a Developer ID nor
 the hardened runtime, so anything running as your user can attach a debugger
 and read the decrypted vault out of memory. Every byte buffer and every wipe in
 this codebase is defence against something weaker than that. This is stated
 plainly rather than mitigated with measures that would only look like a defence:
 see `Sources/App/Hardening.swift` and ADR 5.
+
+The signing key is part of that: it cannot be exported, but `codesign` may use
+it without asking, so such a process could sign its own binary as Sesam and
+inherit the Accessibility grant.
 
 Two more things are out of scope by construction, both documented in
 `docs/adr`:

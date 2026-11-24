@@ -12,12 +12,11 @@ import ApplicationServices
 /// password manager that demands to control your computer before it will show
 /// you anything is a password manager people quit.
 ///
-/// The trap: the grant is attached to a code identity, not to an app. Sesam is
-/// ad-hoc signed and built from source, so its identity is a hash of the
-/// binary, and rebuilding it produces a stranger. The switch in System Settings
-/// stays on while `AXIsProcessTrusted()` starts answering false. Anybody who
-/// rebuilds has to remove the old entry with the minus button and add the new
-/// one, and the menu says so rather than leaving them to work it out.
+/// The trap: the grant is attached to a code identity, not to an app. Installed
+/// with `tools/install-app.sh`, Sesam is signed with this Mac's own certificate
+/// and keeps its identity. An ad-hoc build does not: its identity is a hash of
+/// the binary, and the switch in System Settings stays on while
+/// `AXIsProcessTrusted()` answers false.
 enum Accessibility {
 
     /// Cheap, no prompt, live: a grant made while Sesam is running flips this
